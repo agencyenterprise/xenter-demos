@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weekly Demo</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: #0a0a0f;
+      color: #f0f0f5;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .slide {
+      display: none;
+      width: 100vw;
+      height: 100vh;
+      position: absolute;
+      top: 0; left: 0;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 60px;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .slide.active { display: flex; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Logo ── */
+    .logo {
+      width: 200px;
+      opacity: 0.95;
+    }
+
+    .logo-corner {
+      position: fixed;
+      top: 28px;
+      right: 36px;
+      width: 110px;
+      opacity: 0.5;
+      z-index: 50;
+    }
+
+    /* ── Slide 1 — Title ── */
+    .slide-title {
+      background: radial-gradient(ellipse at 30% 40%, #1a1a3e 0%, #0a0a0f 70%);
+      text-align: center;
+    }
+
+    .slide-title h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      background: linear-gradient(135deg, #ffffff 30%, #a78bff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .slide-title .date {
+      margin-top: 28px;
+      font-size: 1rem;
+      color: #6b7280;
+    }
+
+    .accent-line {
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, #7c6fff, #a78bff);
+      border-radius: 2px;
+      margin: 28px auto 0;
+    }
+
+    /* ── Slide 2 — Agenda ── */
+    .slide-agenda {
+      background: radial-gradient(ellipse at 70% 60%, #0f1a2e 0%, #0a0a0f 70%);
+      align-items: flex-start;
+      justify-content: flex-start;
+      padding: 52px 72px 80px;
+    }
+
+    .slide-agenda .section-label {
+      font-size: 0.95rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #7c6fff;
+      margin-bottom: 16px;
+    }
+
+    .slide-agenda h2 {
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 28px;
+      color: #ffffff;
+    }
+
+    .agenda-list {
+      list-style: none;
+      width: 100%;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .agenda-item {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 0 24px;
+      flex: 1;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      transition: background 0.2s;
+    }
+
+    .agenda-item:hover {
+      background: rgba(124, 111, 255, 0.08);
+      border-color: rgba(124, 111, 255, 0.25);
+    }
+
+    .agenda-content { flex: 1; }
+
+    .presenter-name {
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+      opacity: 0.5;
+      text-transform: uppercase;
+    }
+
+    .agenda-topics {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .agenda-topics li {
+      font-size: 1.55rem;
+      color: #e2e8f0;
+      line-height: 1.4;
+    }
+
+    /* ── Nav ── */
+    .nav {
+      position: fixed;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      z-index: 100;
+    }
+
+    .nav button {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: #f0f0f5;
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+      font-family: inherit;
+    }
+
+    .nav button:hover {
+      background: rgba(124, 111, 255, 0.2);
+      border-color: rgba(124, 111, 255, 0.4);
+    }
+
+    .nav button:disabled {
+      opacity: 0.25;
+      cursor: default;
+    }
+
+    .nav .counter {
+      font-size: 0.8rem;
+      color: #6b7280;
+      min-width: 40px;
+      text-align: center;
+    }
+
+    /* keyboard hint */
+    .hint {
+      position: fixed;
+      bottom: 32px;
+      right: 40px;
+      font-size: 0.72rem;
+      color: #374151;
+      letter-spacing: 0.05em;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Slide 1: Title -->
+  <div class="slide slide-title active" id="slide-1">
+    <img src="Xenter_wordmark_white.avif" alt="Xenter" class="logo" />
+    <h1 style="margin-top: 32px;">Weekly Demo</h1>
+    <div class="accent-line"></div>
+    <p class="date">March 27, 2026</p>
+  </div>
+
+  <!-- Persistent corner logo (agenda slide) -->
+  <img src="Xenter_wordmark_white.avif" alt="Xenter" class="logo-corner" id="corner-logo" style="display:none;" />
+
+  <!-- Slide 2: Agenda -->
+  <div class="slide slide-agenda" id="slide-2">
+    <p class="section-label">Today's Session</p>
+    <h2>Agenda</h2>
+    <ul class="agenda-list">
+
+      <li class="agenda-item">
+        <div class="agenda-content">
+          <p class="presenter-name">Mobolaji Williams</p>
+          <ul class="agenda-topics">
+            <li>XAR Score Pipeline: Real-World Inference — full pipeline from Guru device signal to EOA/RegFrac prediction</li>
+            <li>Denoising Analysis — model-performance restoration with noise cleaning methods</li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="agenda-item">
+        <div class="agenda-content">
+          <p class="presenter-name">Aidan Gawronski</p>
+          <ul class="agenda-topics">
+            <li>AFib filtering and averaging — current state of research</li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="agenda-item">
+        <div class="agenda-content">
+          <p class="presenter-name">Jarbas Moraes</p>
+          <ul class="agenda-topics">
+            <li>Research Portal: initial implementation</li>
+            <li>Research Portal chat engine: initial implementation</li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="agenda-item">
+        <div class="agenda-content">
+          <p class="presenter-name">Pedro Bertoncini</p>
+          <ul class="agenda-topics">
+            <li>Research Portal UX/UI improvements</li>
+            <li>XenMe Provider Experience — UX/UI suggestions &amp; new features (optional)</li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="agenda-item">
+        <div class="agenda-content">
+          <p class="presenter-name">Justin</p>
+          <ul class="agenda-topics">
+            <li>Weekly ceremony review &amp; DSW meeting schedule</li>
+            <li>When should Justin visit the Xenter office next week?</li>
+          </ul>
+        </div>
+      </li>
+
+    </ul>
+  </div>
+
+  <!-- Slide 3: Justin -->
+  <div class="slide slide-agenda" id="slide-3">
+    <p class="section-label">Closing</p>
+    <h2>Justin</h2>
+    <ul class="agenda-list">
+
+      <li class="agenda-item">
+        <div class="agenda-content">
+          <ul class="agenda-topics">
+            <li>Weekly ceremony review &amp; DSW meeting schedule</li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="agenda-item">
+        <div class="agenda-content">
+          <ul class="agenda-topics">
+            <li>When should Justin visit the Xenter office next week?</li>
+          </ul>
+        </div>
+      </li>
+
+    </ul>
+  </div>
+
+  <!-- Nav -->
+  <nav class="nav">
+    <button id="prev" onclick="go(-1)" disabled>← Prev</button>
+    <span class="counter" id="counter">1 / 3</span>
+    <button id="next" onclick="go(1)">Next →</button>
+  </nav>
+
+  <p class="hint">← → arrow keys to navigate</p>
+
+  <script>
+    let current = 0;
+    const slides = document.querySelectorAll('.slide');
+    const total = slides.length;
+
+    function show(n) {
+      slides[current].classList.remove('active');
+      current = Math.max(0, Math.min(n, total - 1));
+      slides[current].classList.add('active');
+      document.getElementById('counter').textContent = `${current + 1} / ${total}`;
+      document.getElementById('prev').disabled = current === 0;
+      document.getElementById('next').disabled = current === total - 1;
+      document.getElementById('corner-logo').style.display = current === 0 ? 'none' : 'block';
+    }
+
+    function go(dir) { show(current + dir); }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') go(1);
+      if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   go(-1);
+    });
+  </script>
+</body>
+</html>
