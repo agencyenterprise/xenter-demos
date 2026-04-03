@@ -81,7 +81,7 @@
       margin: 28px auto 0;
     }
 
-    /* ── Slide 2 — Agenda ── */
+    /* ── Slide 2+ — Agenda / Framing ── */
     .slide-agenda {
       background: radial-gradient(ellipse at 70% 60%, #0f1a2e 0%, #0a0a0f 70%);
       align-items: flex-start;
@@ -155,6 +155,41 @@
       line-height: 1.4;
     }
 
+    /* ── Framing slide specifics ── */
+    .framing-list {
+      list-style: none;
+      width: 100%;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .framing-item {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      padding: 0 32px;
+      flex: 1;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+    }
+
+    .framing-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #7c6fff;
+      flex-shrink: 0;
+    }
+
+    .framing-item p {
+      font-size: clamp(1.3rem, 2.2vw, 1.7rem);
+      color: #e2e8f0;
+      line-height: 1.45;
+    }
+
     /* ── Nav ── */
     .nav {
       position: fixed;
@@ -214,33 +249,39 @@
     <img src="Xenter-horizontal-lockup-white.png" alt="Xenter" class="logo" />
     <h1 style="margin-top: 32px;">Weekly Demo</h1>
     <div class="accent-line"></div>
-    <p class="date">March 27, 2026</p>
+    <p class="date">April 3, 2026</p>
   </div>
 
-  <!-- Persistent corner logo (agenda slide) -->
+  <!-- Persistent corner logo -->
   <img src="Xenter-horizontal-lockup-white.png" alt="Xenter" class="logo-corner" id="corner-logo" style="display:none;" />
 
-  <!-- Slide 2: Agenda -->
+  <!-- Slide 2: Framing -->
   <div class="slide slide-agenda" id="slide-2">
+    <p class="section-label">Before We Begin</p>
+    <h2>A Quick Note</h2>
+    <ul class="framing-list">
+      <li class="framing-item">
+        <span class="framing-dot"></span>
+        <p>Fast, lightweight exploratory sprint — nothing is set in stone. We're here for your reaction &amp; feedback.</p>
+      </li>
+      <li class="framing-item">
+        <span class="framing-dot"></span>
+        <p>Any UI you see today is purely for visualization. Back-end &amp; data science are the focus — Jake owns the production UI.</p>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Slide 3: Agenda -->
+  <div class="slide slide-agenda" id="slide-3">
     <p class="section-label">Today's Session</p>
     <h2>Agenda</h2>
     <ul class="agenda-list">
 
       <li class="agenda-item">
         <div class="agenda-content">
-          <p class="presenter-name">Mobolaji Williams</p>
-          <ul class="agenda-topics">
-            <li>XAR Score Pipeline: Real-World Inference — full pipeline from Guru device signal to EOA/RegFrac prediction</li>
-            <li>Denoising Analysis — model-performance restoration with noise cleaning methods</li>
-          </ul>
-        </div>
-      </li>
-
-      <li class="agenda-item">
-        <div class="agenda-content">
           <p class="presenter-name">Aidan Gawronski</p>
           <ul class="agenda-topics">
-            <li>AFib filtering and averaging — current state of research</li>
+            <li>AR/EOA predictions on porcine Guru device waveforms — 100K dataset results &amp; future plans</li>
           </ul>
         </div>
       </li>
@@ -249,8 +290,17 @@
         <div class="agenda-content">
           <p class="presenter-name">Jarbas Moraes</p>
           <ul class="agenda-topics">
-            <li>Research Portal: initial implementation</li>
-            <li>Research Portal chat engine: initial implementation</li>
+            <li>Lightweight research portal prototype — query &amp; data-source selection (Harvey + open-source mocks)</li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="agenda-item">
+        <div class="agenda-content">
+          <p class="presenter-name">Wellington</p>
+          <ul class="agenda-topics">
+            <li>Provider/physician AI chat — schedule, patients &amp; patient summary via tool calls</li>
+            <li>Discharge notes → medication &amp; care reminders; + watch data → daily alerts &amp; summaries</li>
           </ul>
         </div>
       </li>
@@ -259,43 +309,7 @@
         <div class="agenda-content">
           <p class="presenter-name">Pedro Bertoncini</p>
           <ul class="agenda-topics">
-            <li>Research Portal UX/UI improvements</li>
-            <li>XenMe Provider Experience — UX/UI suggestions &amp; new features (optional)</li>
-          </ul>
-        </div>
-      </li>
-
-      <li class="agenda-item">
-        <div class="agenda-content">
-          <p class="presenter-name">Justin</p>
-          <ul class="agenda-topics">
-            <li>Weekly ceremony review &amp; DSW meeting schedule</li>
-            <li>When should Justin visit the Xenter office next week?</li>
-          </ul>
-        </div>
-      </li>
-
-    </ul>
-  </div>
-
-  <!-- Slide 3: Justin -->
-  <div class="slide slide-agenda" id="slide-3">
-    <p class="section-label">Closing</p>
-    <h2>Justin</h2>
-    <ul class="agenda-list">
-
-      <li class="agenda-item">
-        <div class="agenda-content">
-          <ul class="agenda-topics">
-            <li>Weekly ceremony review &amp; DSW meeting schedule</li>
-          </ul>
-        </div>
-      </li>
-
-      <li class="agenda-item">
-        <div class="agenda-content">
-          <ul class="agenda-topics">
-            <li>When should Justin visit the Xenter office next week?</li>
+            <li>Research portal UX/UI exploration — V2 branch &amp; user flows, grounded in Rich's original demo concept</li>
           </ul>
         </div>
       </li>
