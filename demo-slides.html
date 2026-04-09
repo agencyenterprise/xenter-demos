@@ -156,6 +156,39 @@
       line-height: 1.4;
     }
 
+    /* ── Products slide ── */
+    .products-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      width: 100%;
+      flex: 1;
+    }
+
+    .product-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      padding: 20px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .product-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: #a78bff;
+      text-transform: uppercase;
+    }
+
+    .product-card p {
+      font-size: 1.05rem;
+      color: #cbd5e1;
+      line-height: 1.5;
+    }
+
     /* ── Framing slide specifics ── */
     .framing-list {
       list-style: none;
@@ -253,7 +286,41 @@
   <!-- Persistent corner logo -->
   <img src="Xenter-horizontal-lockup-white.png" alt="Xenter" class="logo-corner" id="corner-logo" style="display:none;" />
 
-  <!-- Slide 2: Team Intros -->
+  <!-- Slide 2: Products Overview -->
+  <div class="slide slide-agenda" id="slide-2">
+    <p class="section-label">What We're Building</p>
+    <h2>Products</h2>
+    <div class="products-grid">
+
+      <div class="product-card">
+        <h3>XenFi Bridge</h3>
+        <p>Hardware and software in clinical spaces that displays live data and transfers it from smart medical devices to the cloud, delivering AI-powered decision support to physicians in real time.</p>
+      </div>
+
+      <div class="product-card">
+        <h3>XMD Cloud</h3>
+        <p>A repository of high-fidelity, clinical-grade data gathered through XenFi. Powers RexAI and provides real-time clinical decision support back to physicians.</p>
+      </div>
+
+      <div class="product-card">
+        <h3>RexAI</h3>
+        <p>AI navigator for clinical data. Helps researchers build complex queries, gives physicians deeper insights, and guides patients through their healthcare journey in plain language.</p>
+      </div>
+
+      <div class="product-card">
+        <h3>XenME Patient App</h3>
+        <p>A digital health companion in the patient's pocket. RexAI breaks down complex clinical information into actionable insights and acts as a personal health coach.</p>
+      </div>
+
+      <div class="product-card">
+        <h3>XenME Physician App</h3>
+        <p>Gives doctors granular case analysis and data export tools. RexAI enables querying patient data alongside published research for deeper clinical understanding.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Slide 3: Team Intros -->
   <div class="slide slide-agenda" id="slide-2">
     <p class="section-label">Today's Session</p>
     <h2>Agenda</h2>
@@ -301,7 +368,7 @@
   <!-- Nav -->
   <nav class="nav">
     <button id="prev" onclick="go(-1)" disabled>← Prev</button>
-    <span class="counter" id="counter">1 / 2</span>
+    <span class="counter" id="counter">1 / 3</span>
     <button id="next" onclick="go(1)">Next →</button>
   </nav>
 
