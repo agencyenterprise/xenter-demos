@@ -120,6 +120,7 @@
       gap: 20px;
       padding: 0 24px;
       flex: 1;
+      position: relative;
       background: rgba(255,255,255,0.04);
       border: 1px solid rgba(255,255,255,0.07);
       border-radius: 12px;
@@ -135,10 +136,11 @@
 
     .product-tags {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       gap: 6px;
-      align-self: flex-start;
-      padding-top: 18px;
+      position: absolute;
+      bottom: 12px;
+      right: 24px;
     }
 
     .product-tag {
@@ -284,7 +286,7 @@
         <div class="agenda-content">
           <p class="presenter-name">Jarbas Moraes</p>
           <ul class="agenda-topics">
-            <li>Integrated a predictive model into Xenter's bedside clinical devices, making predictions based on the data coming from the Guru waveform.</li>
+            <li>Integrated a predictive model into Xenter's bedside clinical devices, making predictions based on the waveform data coming from the Guru device.</li>
           </ul>
         </div>
         <div class="product-tags">
