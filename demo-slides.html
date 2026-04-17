@@ -139,7 +139,6 @@
       font-weight: 600;
       letter-spacing: 0.05em;
       margin-bottom: 8px;
-      opacity: 0.5;
       text-transform: uppercase;
     }
 
@@ -280,47 +279,32 @@
     <img src="Xenter-horizontal-lockup-white.png" alt="Xenter" class="logo" />
     <h1 style="margin-top: 32px;">Weekly Demo</h1>
     <div class="accent-line"></div>
-    <p class="date">April 10, 2026</p>
+    <p class="date">April 17, 2026 &nbsp;·&nbsp; National Cheese Ball Day</p>
   </div>
 
   <!-- Persistent corner logo -->
   <img src="Xenter-horizontal-lockup-white.png" alt="Xenter" class="logo-corner" id="corner-logo" style="display:none;" />
 
-  <!-- Slide 2: Products Overview -->
-  <div class="slide slide-agenda" id="slide-2">
-    <p class="section-label">What We're Building</p>
-    <h2>Products</h2>
-    <div class="products-grid">
+  <!-- Slide 2: Framing -->
+  <div class="slide slide-agenda" id="slide-2" style="justify-content: center;">
+    <p class="section-label">Today's Format</p>
+    <h2>How We're Spending Our Time</h2>
+    <ul class="framing-list" style="flex: 0; gap: 28px;">
 
-      <div class="product-card">
-        <h3>XenFi Bridge</h3>
-        <p>Hardware and software in clinical spaces that displays live data and transfers it from smart medical devices to the cloud, delivering AI-powered decision support to physicians in real time.</p>
-      </div>
+      <li class="framing-item" style="flex: 0;">
+        <div class="framing-dot"></div>
+        <p><strong style="color: #e2e8f0;">First half — presentations.</strong> A bit lighter than usual today, but we'll walk through what the team has been working on.</p>
+      </li>
 
-      <div class="product-card">
-        <h3>XMD Cloud</h3>
-        <p>A repository of high-fidelity, clinical-grade data gathered through XenFi. Powers RexAI and provides real-time clinical decision support back to physicians.</p>
-      </div>
+      <li class="framing-item" style="flex: 0;">
+        <div class="framing-dot"></div>
+        <p><strong style="color: #e2e8f0;">Second half — immediate next steps.</strong> We want to use the back half of our time to align on what we're prioritizing and doing next.</p>
+      </li>
 
-      <div class="product-card">
-        <h3>RexAI</h3>
-        <p>AI navigator for clinical data. Helps researchers build complex queries, gives physicians deeper insights, and guides patients through their healthcare journey in plain language.</p>
-      </div>
-
-      <div class="product-card">
-        <h3>XenME Patient App</h3>
-        <p>A digital health companion in the patient's pocket. RexAI breaks down complex clinical information into actionable insights and acts as a personal health coach.</p>
-      </div>
-
-      <div class="product-card">
-        <h3>XenME Physician App</h3>
-        <p>Gives doctors granular case analysis and data export tools. RexAI enables querying patient data alongside published research for deeper clinical understanding.</p>
-      </div>
-
-    </div>
+    </ul>
   </div>
 
-  <!-- Slide 3: Team Intros -->
+  <!-- Slide 3: Agenda -->
   <div class="slide slide-agenda" id="slide-2">
     <p class="section-label">Today's Session</p>
     <h2>Agenda</h2>
@@ -328,36 +312,45 @@
 
       <li class="agenda-item">
         <div class="agenda-content">
-          <p class="presenter-name">Jarbas Moraes</p>
+          <p class="presenter-name" style="color: #ff6b6b;">Wellington Santos</p>
           <ul class="agenda-topics">
-            <li>Integrated a predictive model into Xenter's bedside clinical devices, making predictions based on the waveform data coming from the Guru device.</li>
+            <li>Framework Decision — findings from evaluating Microsoft Agents Framework and Microsoft Extensions AI</li>
           </ul>
         </div>
       </li>
 
       <li class="agenda-item">
         <div class="agenda-content">
-          <p class="presenter-name">Mobolaji Williams</p>
+          <p class="presenter-name" style="color: #ff9f43;">Jarbas Moraes</p>
           <ul class="agenda-topics">
-            <li>Trained the predictive model on the incredible Harvi cardiovascular simulator, achieving very high accuracy, and we are taking steps to ensure it performs well on real data.</li>
+            <li>Research Portal Agent SDK — keeping the .NET pipeline and proposed direction for the research portal</li>
           </ul>
         </div>
       </li>
 
       <li class="agenda-item">
         <div class="agenda-content">
-          <p class="presenter-name">Wellington Santos</p>
+          <p class="presenter-name" style="color: #ffd32a;">Mobolaji Williams</p>
           <ul class="agenda-topics">
-            <li>Integrated AI features into the patient and physician chat applications, such as accurately parsing patient discharge instructions into patient notifications.</li>
+            <li>Data Science: Feature Expansion and Results; Real Patient 26 Results</li>
           </ul>
         </div>
       </li>
 
       <li class="agenda-item">
         <div class="agenda-content">
-          <p class="presenter-name">Pedro Bertoncini</p>
+          <p class="presenter-name" style="color: #0be881;">Aidan Gawronski</p>
           <ul class="agenda-topics">
-            <li>Exploring various layouts, features, and interactions to make researchers productive in the Rex AI research portal.</li>
+            <li>Two-stage model with combined 510-feature set — ~0.99 R² — performance has been recovered</li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="agenda-item">
+        <div class="agenda-content">
+          <p class="presenter-name" style="color: #a29bfe;">Pedro Bertoncini</p>
+          <ul class="agenda-topics">
+            <li>UX Research Brief — Designing for Elderly Patients</li>
           </ul>
         </div>
       </li>
