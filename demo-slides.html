@@ -279,7 +279,7 @@
     <img src="Xenter-horizontal-lockup-white.png" alt="Xenter" class="logo" />
     <h1 style="margin-top: 32px;">Weekly Demo</h1>
     <div class="accent-line"></div>
-    <p class="date">June 19, 2026 &nbsp;·&nbsp; Juneteenth &nbsp;·&nbsp; World Sauntering Day &nbsp;·&nbsp; National Garfield the Cat Day</p>
+    <p class="date">July 31, 2026 &nbsp;·&nbsp; National Raspberry Cake Day</p>
   </div>
 
   <!-- Persistent corner logo -->
@@ -293,20 +293,9 @@
 
       <li class="agenda-item">
         <div class="agenda-content">
-          <p class="presenter-name" style="color: #a29bfe;">Pedro Bertoncini</p>
-          <ul class="agenda-topics">
-            <li>XenViewer (hub display): walk-through of the interface enhancement deck based on clinician input.</li>
-            <li>Exploratory interface views for the live preview and snapshots, for feedback and discussion.</li>
-          </ul>
-        </div>
-      </li>
-
-      <li class="agenda-item">
-        <div class="agenda-content">
           <p class="presenter-name" style="color: #54d6a0;">Mobolaji Williams</p>
           <ul class="agenda-topics">
-            <li>Xenviewer display calculations: how we process scanned input signals and the inconsistencies in the numbers we display.</li>
-            <li>FDA regulatory strategy: the CardioSense case, how it compares to Xenter, and our next steps toward FDA clearance.</li>
+            <li>Real life use case, lawsuits over medical advice from consumer chatbots and the behavior we are engineering against.</li>
           </ul>
         </div>
       </li>
@@ -315,7 +304,7 @@
         <div class="agenda-content">
           <p class="presenter-name" style="color: #ff9f43;">Wellington Santos</p>
           <ul class="agenda-topics">
-            <li>Rex AI for Physician: answering general and specific questions, with user feedback while composing answers.</li>
+            <li>Short live demo: passing and blocked questions, plus the guardrail firing in between.</li>
           </ul>
         </div>
       </li>
@@ -324,8 +313,17 @@
         <div class="agenda-content">
           <p class="presenter-name" style="color: #ffd32a;">Aidan Gawronski</p>
           <ul class="agenda-topics">
-            <li>Reproducible model packaging and ONNX.</li>
-            <li>Hub-ai deployment.</li>
+            <li>LLM evaluations: exploring evaluation types and treating prompt changes like code deploys.</li>
+            <li>Why clinician feedback is needed and how we avoid it becoming a blocker.</li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="agenda-item">
+        <div class="agenda-content">
+          <p class="presenter-name" style="color: #4dd4f7;">Jarbas Moraes</p>
+          <ul class="agenda-topics">
+            <li>Feedback MVP: walks us through the guardrail MVP feedback loop.</li>
           </ul>
         </div>
       </li>
@@ -363,6 +361,9 @@
       if (e.key === 'ArrowRight' || e.key === 'ArrowDown') go(1);
       if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   go(-1);
     });
+
+    // sync the counter and buttons on load so the slide count is never stale
+    show(0);
   </script>
 </body>
 </html>
